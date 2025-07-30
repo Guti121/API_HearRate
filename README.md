@@ -2,32 +2,40 @@
 This project is an API designed to monitor heart rate in real time using WebSockets, allowing continuous and dynamic tracking of patient vitals.
 
 🧠 Overview
-Built with Django REST Framework for the backend and React for the frontend.
+Heart rate data is captured through an ESP32 microcontroller connected to a heart rate sensor.
 
-Enables the registration of multiple patients, each associated with a wristband (device) to monitor their heart rate in real time.
+The ESP32 sends this data in real time to the server via WebSockets.
 
-Implements real-time communication via WebSockets to stream live heart rate data to the frontend.
+The backend, built with Django REST Framework, receives and processes this data.
 
-When a patient's heart rate exceeds safe limits and is considered life-threatening, the system automatically sends an emergency SMS using the Twilio API to their emergency contact.
+The frontend, developed in React.js, displays the measurements live to users.
 
-Emergency contacts can review the situation and log a report explaining the cause of the alert, which is then stored in the database for record-keeping and further analysis.
+Enables registration of multiple patients, each linked to a wristband (ESP32 + sensor), allowing them to be monitored individually.
+
+If a patient's heart rate exceeds safe thresholds and is considered life-threatening, the system triggers an emergency SMS via the Twilio API to alert their emergency contact.
+
+Emergency contacts can review the situation and submit a report explaining the cause of the alert, which is stored in the database for future reference.
 
 ⚙️ Tech Stack
+Hardware: ESP32 + Heart Rate Sensor
+
 Backend: Django REST Framework
 
 Frontend: React.js
 
 Real-time Communication: Django Channels + WebSockets
 
-Notifications: Twilio API (for sending SMS alerts)
+Notifications: Twilio API (SMS alerts)
 
 ✅ Features
-Real-time heart rate monitoring
+Real-time heart rate monitoring from ESP32
 
-Patient and wristband registration
+WebSocket communication for live data transfer
 
-Emergency SMS alerts
+Patient and wristband/device registration
 
-Health incident reporting
+Emergency SMS alerts when heart rate is abnormal
+
+Incident reporting system
 
 RESTful API endpoints following best practices
